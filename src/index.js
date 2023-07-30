@@ -4,6 +4,8 @@ if (process.env.NODE_ENV !== 'production') {
 const cron = require('node-cron');
 const TelegramBot = require('node-telegram-bot-api');
 const {sendDailyDutyNotification} = require("./dailyMessages");
+const {copyCSVContents} = require("./readCSV");
+const {askForCsvScheduleFile} = require('./monthlyMessages')
 
 const token = process.env.SECRET_TELEGRM_BOT_TOKEN;
 
@@ -11,8 +13,14 @@ const token = process.env.SECRET_TELEGRM_BOT_TOKEN;
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
+askForCsvScheduleFile(bot)
+
 sendDailyDutyNotification(bot);
 
+
+copyCSVContents('./cooking-schedule-2.csv','./cooking-schedule.csv')
+    .then(()=>console.log('success'))
+    .catch((err)=>console.log(err))
 
 
 

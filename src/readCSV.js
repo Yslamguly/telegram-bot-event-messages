@@ -1,12 +1,16 @@
 const fs = require("fs");
-const { parse } = require("csv-parse");
+const {parse} = require("csv-parse");
+const {promisify} = require('util');
+const readFileAsync = promisify(fs.readFile);
+const writeFileAsync = promisify(fs.writeFile);
+const unlinkAsync = promisify(fs.unlink);
 
 function readCSVFile(path) {
     return new Promise((resolve, reject) => {
         const data = [];
         let headers = null
         fs.createReadStream(path)
-            .pipe(parse({ delimiter: ",", from_line: 1 }))
+            .pipe(parse({delimiter: ",", from_line: 1}))
             .on("data", function (row) {
                 if (!headers) {
                     headers = row;
@@ -31,5 +35,14 @@ function readCSVFile(path) {
     });
 }
 
+async function copyCSVContents(sourceFilePath, destinationFilePath) {
+    const data = await readFileAsync(sourceFilePath)
 
-module.exports = {readCSVFile}
+    await writeFileAsync(destinationFilePath, data)
+
+    await unlinkAsync(sourceFilePath)
+
+}
+
+
+module.exports = {readCSVFile, copyCSVContents}
