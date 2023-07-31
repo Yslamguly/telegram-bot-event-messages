@@ -1,5 +1,5 @@
 const {DAILY_DUTY_NOTIFICATION_TIME} = require('./constants')
-const {readCSVFile} = require("./readCSV");
+const {readCSVFile} = require("./CSVHandler");
 const cron = require("node-cron");
 const {buildMessage} = require("./messageBuilder");
 const CHAT_ID = process.env.CHAT_ID
