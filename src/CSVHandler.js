@@ -5,6 +5,7 @@ const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 const unlinkAsync = promisify(fs.unlink);
 
+//Function that reads CSV file and return an array of objects containing each row
 function readCSVFile(path) {
     return new Promise((resolve, reject) => {
         const data = [];
@@ -23,7 +24,7 @@ function readCSVFile(path) {
                 }
             })
             .on("end", function () {
-                console.log("finished");
+                console.log("finished reading csv");
                 // Resolve the Promise with the data array
                 resolve(data);
             })
@@ -35,6 +36,7 @@ function readCSVFile(path) {
     });
 }
 
+// Function that copies contents from one CSV to another
 async function copyCSVContents(sourceFilePath, destinationFilePath) {
     const data = await readFileAsync(sourceFilePath)
 
@@ -44,6 +46,8 @@ async function copyCSVContents(sourceFilePath, destinationFilePath) {
 
 }
 
+
+//Function that downloads uploaded file and copies new file's content to the original and deletes the new CSV
 async function processUploadedCSV(bot,msg) {
     const chatId = msg.chat.id;
     const messageId = msg.message_id;
@@ -68,4 +72,4 @@ async function processUploadedCSV(bot,msg) {
 }
 
 
-module.exports = {readCSVFile, copyCSVContents, processUploadedCSV}
+module.exports = {readCSVFile, processUploadedCSV}
