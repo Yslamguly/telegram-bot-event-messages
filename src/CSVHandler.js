@@ -44,5 +44,28 @@ async function copyCSVContents(sourceFilePath, destinationFilePath) {
 
 }
 
+async function processUploadedCSV(bot,msg) {
+    const chatId = msg.chat.id;
+    const messageId = msg.message_id;
 
-module.exports = {readCSVFile, copyCSVContents}
+    if (msg.document.mime_type !== 'text/csv') {
+        await bot.sendMessage(chatId, 'Please, upload a file in CSV format! Allah razy bolsyn 😊', {reply_to_message_id: messageId})
+    } else {
+        // Process the file here as needed
+
+        const fileId = msg.document.file_id;
+        const fileInfo = await bot.getFile(fileId);
+
+        const originalFilename = fileInfo.file_path.split('/').pop();
+        const uploadedFilePath = `./${originalFilename}`;
+
+        await bot.downloadFile(msg.document.file_id, './')
+
+        await copyCSVContents(`./${uploadedFilePath}`, './cooking-schedule.csv')
+            .then(() => bot.sendMessage(chatId, 'Schedule has been updated successfully 🥳!'))
+            .catch(err => console.log(err))
+    }
+}
+
+
+module.exports = {readCSVFile, copyCSVContents, processUploadedCSV}
