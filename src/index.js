@@ -20,7 +20,6 @@ sendDailyDutyNotification(bot);
 
 sendNotificationForWeeklyCleaning(bot)
 
-
 askForCsvScheduleFile(bot)
 
 
