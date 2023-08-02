@@ -1,3 +1,5 @@
 /node_modules/
 /.idea/
 /.env/
+/apartment-cleaning-schedule.csv/
+/cooking-schedule.csv/
