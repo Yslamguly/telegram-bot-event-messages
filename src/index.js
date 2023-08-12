@@ -22,6 +22,5 @@ sendNotificationForWeeklyCleaning(bot)
 
 askForCsvScheduleFile(bot)
 
-test(bot)
 
 
