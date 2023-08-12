@@ -5,7 +5,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const {sendDailyDutyNotification} = require("./dailyMessages");
 const {askForCsvScheduleFile} = require('./monthlyMessages')
 const {sendNotificationForWeeklyCleaning} = require('./weeklyMessages')
-const {onChangeScheduleCommand} = require("./commandsHandler");
+const {onChangeScheduleCommand, test} = require("./commandsHandler");
 
 const token = process.env.SECRET_TELEGRM_BOT_TOKEN;
 
@@ -22,5 +22,6 @@ sendNotificationForWeeklyCleaning(bot)
 
 askForCsvScheduleFile(bot)
 
+test(bot)
 
 

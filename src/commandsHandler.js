@@ -31,4 +31,10 @@ async function onChangeScheduleCommand(bot) {
 
 }
 
-module.exports = {onChangeScheduleCommand}
+function test(bot){
+    bot.on('text',()=>{
+        bot.sendMessage(CHAT_ID,'Message received')
+    })
+}
+
+module.exports = {onChangeScheduleCommand,test}
