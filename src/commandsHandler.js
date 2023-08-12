@@ -32,4 +32,4 @@ async function onChangeScheduleCommand(bot) {
 }
 
 
-module.exports = {onChangeScheduleCommand,test}
+module.exports = {onChangeScheduleCommand}
