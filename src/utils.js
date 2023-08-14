@@ -50,4 +50,9 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
 };
 
 
-module.exports = {createNotificationScheduler}
+const testMessageAfterCSVChange = (bot,filePath,buildMessageFunction) =>{
+    readCSVFile(filePath)
+        .then((data)=> bot.sendMessage(CHAT_ID,`This is just a test: \n ${buildMessageFunction(data[0])}`))
+}
+
+module.exports = {createNotificationScheduler,testMessageAfterCSVChange}
