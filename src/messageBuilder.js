@@ -1,8 +1,9 @@
 const buildDailyDutyMessage = (dataObject) => {
-    return `Bu gun: ${dataObject.Date} \n 
-Nobatçy: ${dataObject.Name} \n
+    return `Today: ${dataObject.Date} \n 
 Breakfast: ${dataObject.Breakfast} \n
-Agsamky nahar: ${dataObject.MealNumber}
+What we have for dinner: ${dataObject.Dinner} \n
+Responsible for dinner: ${dataObject.Name}
+Link: ${dataObject.Link}
     `
 }
 
