@@ -51,7 +51,6 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
 
 
 const confirmMessageAfterScheduleChange = (bot, filePath, buildMessageFunction) =>{
-    console.log('Changed')
     readCSVFile(filePath)
         .then((data)=> bot.sendMessage(CHAT_ID,`This is just a test: \n ${buildMessageFunction(data[0])}`))
         .catch((err)=>{

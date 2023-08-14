@@ -6,8 +6,6 @@ const {sendDailyDutyNotification} = require("./dailyMessages");
 const {askForCsvScheduleFile} = require('./monthlyMessages')
 const {sendNotificationForWeeklyCleaning} = require('./weeklyMessages')
 const {onChangeScheduleCommand} = require("./commandsHandler");
-const {confirmMessageAfterScheduleChange} = require("./utils");
-const {buildDailyDutyMessage} = require("./messageBuilder")
 const token = process.env.SECRET_TELEGRM_BOT_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
@@ -16,7 +14,6 @@ const bot = new TelegramBot(token, {polling: true});
 
 
 onChangeScheduleCommand(bot)
-    .then(()=> confirmMessageAfterScheduleChange(bot,'./cooking-schedule.csv',buildDailyDutyMessage))
 
 sendDailyDutyNotification(bot);
 
