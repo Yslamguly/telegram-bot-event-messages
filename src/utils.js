@@ -53,7 +53,10 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
 const testMessageAfterCSVChange = (bot,filePath,buildMessageFunction) =>{
     readCSVFile(filePath)
         .then((data)=> bot.sendMessage(CHAT_ID,`This is just a test: \n ${buildMessageFunction(data[0])}`))
-        .catch(()=>bot.sendMessage(CHAT_ID,'Something went wrong please try again!'))
+        .catch((err)=>{
+            bot.sendMessage(CHAT_ID,'Something went wrong please try again!')
+            console.log("Error reading csv file : " + err)
+        })
 }
 
 module.exports = {createNotificationScheduler,testMessageAfterCSVChange}

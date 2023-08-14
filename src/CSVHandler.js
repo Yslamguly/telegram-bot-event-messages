@@ -68,9 +68,10 @@ async function processUploadedCSV(bot,msg) {
         await bot.downloadFile(msg.document.file_id, './')
 
         await copyCSVContents(`./${uploadedFilePath}`, './cooking-schedule.csv')
-            .then(()=>testMessageAfterCSVChange(bot,'./cooking-schedule.csv',buildDailyDutyMessage))
             .then(() => bot.sendMessage(chatId, 'Schedule has been updated successfully 🥳!'))
             .catch(err => console.log(err))
+
+        testMessageAfterCSVChange(bot,'./cooking-schedule.csv',buildDailyDutyMessage)
     }
 }
 
