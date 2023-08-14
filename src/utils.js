@@ -51,7 +51,7 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
 
 
 const testMessageAfterCSVChange = (bot,filePath,buildMessageFunction) =>{
-    return readCSVFile(filePath)
+    readCSVFile(filePath)
         .then((data)=> bot.sendMessage(CHAT_ID,`This is just a test: \n ${buildMessageFunction(data[0])}`))
         .catch(()=>bot.sendMessage(CHAT_ID,'Something went wrong please try again!'))
 }
