@@ -1,6 +1,8 @@
 const fs = require("fs");
 const {parse} = require("csv-parse");
 const {promisify} = require('util');
+const {testMessageAfterCSVChange} = require("./utils");
+const {buildDailyDutyMessage} = require("./messageBuilder");
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 const unlinkAsync = promisify(fs.unlink);
@@ -66,6 +68,7 @@ async function processUploadedCSV(bot,msg) {
         await bot.downloadFile(msg.document.file_id, './')
 
         await copyCSVContents(`./${uploadedFilePath}`, './cooking-schedule.csv')
+            .then(()=>testMessageAfterCSVChange(bot,'./cooking-schedule.csv',buildDailyDutyMessage))
             .then(() => bot.sendMessage(chatId, 'Schedule has been updated successfully 🥳!'))
             .catch(err => console.log(err))
     }
