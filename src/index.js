@@ -16,7 +16,7 @@ const bot = new TelegramBot(token, {polling: true});
 
 
 onChangeScheduleCommand(bot)
-    .then(()=>testMessageAfterCSVChange(bot,'./cooking-schedule.csv',buildDailyDutyMessage))
+    .then(()=> testMessageAfterCSVChange(bot,'./cooking-schedule.csv',buildDailyDutyMessage))
 
 sendDailyDutyNotification(bot);
 
