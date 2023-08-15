@@ -15,6 +15,7 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
                 i = 0;
             }
             i++;
+        },{timezone: "Europe/Budapest"
         });
     };
 
