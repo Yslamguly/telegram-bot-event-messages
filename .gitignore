@@ -1,5 +1,5 @@
-/node_modules/
-/.idea/
-/.env/
-/apartment-cleaning-schedule.csv/
-/cooking-schedule.csv/
+node_modules
+.idea
+.env
+cooking-schedule.csv
+apartment-cleaning-schedule.csv
