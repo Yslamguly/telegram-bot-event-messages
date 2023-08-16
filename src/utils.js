@@ -14,6 +14,7 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
             if (i === data.length) {
                 i = 0;
             }
+            bot.sendMessage(CHAT_ID,buildMessageFunction(data[i]))
             i++;
         },{timezone: "Europe/Budapest"});
     };
