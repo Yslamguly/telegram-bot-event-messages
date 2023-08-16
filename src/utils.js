@@ -30,7 +30,6 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
 
                     previousData = data;
                     scheduleCronJob(data);
-                    bot.sendMessage(CHAT_ID,`This is just a test: \n ${buildMessageFunction(data[0])}`)
                 }
             })
             .catch((err) => {
