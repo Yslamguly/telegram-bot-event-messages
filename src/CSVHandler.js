@@ -47,7 +47,7 @@ async function copyCSVContents(sourceFilePath, destinationFilePath) {
         await unlinkAsync(sourceFilePath)
 
     }catch (error){
-        console.error(error)
+        console.error("Error happened: " + error)
     }
 
 }
@@ -77,7 +77,7 @@ async function processUploadedCSV(bot,msg) {
 
         }
     }catch(error) {
-        console.error("Error: " +  error)
+        console.error("Error happened: " +  error)
     }
 }
 
