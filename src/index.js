@@ -2,10 +2,11 @@ if (process.env.NODE_ENV !== 'production') {
     require("dotenv").config();
 }
 const TelegramBot = require('node-telegram-bot-api');
-const {sendDailyDutyNotification} = require("./dailyMessages");
+const {sendDailyDutyNotification, sendDailyBookReadingPoll} = require("./dailyMessages");
 const {askForCsvScheduleFile} = require('./monthlyMessages')
 const {sendNotificationForWeeklyCleaning} = require('./weeklyMessages')
 const {onChangeScheduleCommand,onChangeCleaningScheduleCommand} = require("./commandsHandler");
+const FETH_CHAT_ID = process.env.FETH_CHAT_ID
 const token = process.env.SECRET_TELEGRM_BOT_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
@@ -22,6 +23,10 @@ sendDailyDutyNotification(bot);
 sendNotificationForWeeklyCleaning(bot)
 
 askForCsvScheduleFile(bot)
+
+sendDailyBookReadingPoll(bot)
+
+sendDailyBookReadingPoll(bot)
 
 
 
