@@ -26,7 +26,5 @@ askForCsvScheduleFile(bot)
 
 sendDailyBookReadingPoll(bot)
 
-sendDailyBookReadingPoll(bot)
-
 
 
