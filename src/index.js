@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-    require("dotenv").config();
-}
+require("dotenv").config();
 const TelegramBot = require('node-telegram-bot-api');
 const {sendDailyDutyNotification, sendDailyBookReadingPoll} = require("./dailyMessages");
 const {askForCsvScheduleFile} = require('./monthlyMessages')
