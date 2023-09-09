@@ -4,8 +4,14 @@ const {sendDailyDutyNotification, sendDailyBookReadingPoll} = require("./dailyMe
 const {askForCsvScheduleFile} = require('./monthlyMessages')
 const {sendNotificationForWeeklyCleaning} = require('./weeklyMessages')
 const {onChangeScheduleCommand,onChangeCleaningScheduleCommand} = require("./commandsHandler");
-const FETH_CHAT_ID = process.env.FETH_CHAT_ID
-const token = process.env.SECRET_TELEGRM_BOT_TOKEN;
+
+const token =
+    process.env.NODE_ENV === 'development'
+        ? process.env.SECRET_TELEGRAM_TEST_BOT_TOKEN
+        : process.env.SECRET_TELEGRM_BOT_TOKEN;
+
+
+
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
