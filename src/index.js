@@ -16,6 +16,13 @@ const token =
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
+try{
+    console.log('Bot is running')
+    console.log('Test env is accessible: ' + process.env.TEST_ENV)
+}catch (error){
+    console.error('Error on initial run: ' + error)
+}
+
 
 
 onChangeScheduleCommand(bot)
