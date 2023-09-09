@@ -12,10 +12,10 @@ const sendDailyDutyNotification = (bot) => {
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const sendDailyBookReadingPoll =  (bot)=>{
 
-    const currentDayOfTheMonth = new Date().getDate().toString();
-    const currentMonthOfTheYear = months[new Date().getMonth().toString()]
-
     cron.schedule(DAILY_READING_POLL_TIME,()=>{
+        const currentDayOfTheMonth = new Date().getDate().toString();
+        const currentMonthOfTheYear = months[new Date().getMonth().toString()]
+
         bot.sendPoll(FETH_CHAT_ID,`${currentDayOfTheMonth}  ${currentMonthOfTheYear} Feth suresi we 129 Ya Latifu okaldymy?`,['Hawa','Yok'],{is_anonymous:false})
             .catch((error)=> console.log(`Send daily book reading poll error: ${error}`))
     },{timezone:'Europe/Budapest'})
