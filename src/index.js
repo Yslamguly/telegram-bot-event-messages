@@ -23,6 +23,7 @@ try{
     console.error('Error on initial run: ' + error)
 }
 
+bot.sendMessage(process.env.MY_CHAT,'Bot has restarted')
 
 
 onChangeScheduleCommand(bot)
@@ -36,6 +37,4 @@ sendNotificationForWeeklyCleaning(bot)
 askForCsvScheduleFile(bot)
 
 sendDailyBookReadingPoll(bot)
-
-
 
