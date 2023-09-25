@@ -32,9 +32,17 @@ onChangeCleaningScheduleCommand(bot)
 
 sendDailyDutyNotification(bot);
 
-sendNotificationForWeeklyCleaning(bot)
+// sendNotificationForWeeklyCleaning(bot)
 
 askForCsvScheduleFile(bot)
 
 sendDailyBookReadingPoll(bot)
 
+
+
+// bot.on('message', (msg) => {
+//     const chatId = msg.chat.id;
+//
+//     // send a message to the chat acknowledging receipt of their message
+//     bot.sendMessage(chatId, chatId);
+// });
