@@ -14,8 +14,13 @@ const createNotificationScheduler = (bot, filePath, notificationTime, buildMessa
             if (i === data.length) {
                 i = 0;
             }
-            bot.sendMessage(CHAT_ID,buildMessageFunction(data[Math.floor(i/2)]))
-            i++;
+            try{
+                bot.sendMessage(CHAT_ID,buildMessageFunction(data[i]))
+                i++;
+            }catch (error){
+                console.error("Create notification scheduler error: " + error)
+            }
+
         },{timezone: "Europe/Budapest"});
     };
 
