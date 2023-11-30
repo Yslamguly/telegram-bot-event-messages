@@ -36,8 +36,6 @@ sendDailyDutyNotification(bot);
 
 askForCsvScheduleFile(bot)
 
-sendDailyBookReadingPoll(bot)
-
 
 
 // bot.on('message', (msg) => {
