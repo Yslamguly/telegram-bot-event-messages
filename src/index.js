@@ -32,7 +32,7 @@ onChangeCleaningScheduleCommand(bot)
 
 sendDailyDutyNotification(bot);
 
-// sendNotificationForWeeklyCleaning(bot)
+sendNotificationForWeeklyCleaning(bot)
 
 askForCsvScheduleFile(bot)
 
