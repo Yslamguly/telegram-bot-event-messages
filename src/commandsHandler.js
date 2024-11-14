@@ -45,7 +45,7 @@ function onNextDayCommand(bot){
         const fileContent = readCSVFile("./cooking-schedule.csv");
         fileContent.then(data=> {
             const today = new Date();
-            const formattedToday = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth() + 1).padStart(2, '0')}.${today.getFullYear()}`;
+            const formattedToday = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
             let isMessageSent = false;
             for (let i = 0; i < data.length; i++)  {
                 const row = data[i];
