@@ -1,4 +1,5 @@
-const {processUploadedCSV, copyCSVContents} = require('./CSVHandler')
+const {processUploadedCSV, copyCSVContents, readCSVFile} = require('./CSVHandler')
+const { buildDailyDutyMessage } = require('./messageBuilder')
 
 function FileRequest(messageId, chatId, text) {
     this.reply_markup = {
@@ -38,6 +39,35 @@ function onChangeScheduleCommand(bot) {
 
 }
 
+function onNextDayCommand(bot){
+    bot.onText(/\/next/, (msg) => {
+        const chatId = msg.chat.id;
+        const fileContent = readCSVFile("./cooking-schedule.csv");
+        fileContent.then(data=> {
+            const today = new Date();
+            const formattedToday = `${String(today.getDate()).padStart(2, '0')}.${String(today.getMonth() + 1).padStart(2, '0')}.${today.getFullYear()}`;
+            let isMessageSent = false;
+            for (let i = 0; i < data.length; i++)  {
+                const row = data[i];
+                if (row.Date === formattedToday) {
+                    if (i + 1 < data.length) {
+                        bot.sendMessage(chatId, buildDailyDutyMessage(data[i+1]));
+                        isMessageSent = true
+                        break;
+                    } else {
+                        bot.sendMessage(chatId, "No next day is availabe 😞. Please update the schedule!")
+                        isMessageSent = true
+                        break;
+                    }
+                }
+            };
+            if(!isMessageSent){
+                bot.sendMessage(chatId, "No match is found 😞. Please update the schedule!")
+            }
+        })
+    })
+}
+
 
 function onChangeCleaningScheduleCommand(bot){
     let botMessageId = null
@@ -68,4 +98,4 @@ function onChangeCleaningScheduleCommand(bot){
 }
 
 
-module.exports = {onChangeScheduleCommand,onChangeCleaningScheduleCommand}
+module.exports = {onChangeScheduleCommand,onChangeCleaningScheduleCommand, onNextDayCommand}

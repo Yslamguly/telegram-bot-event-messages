@@ -1,9 +1,9 @@
 require("dotenv").config();
 const TelegramBot = require('node-telegram-bot-api');
-const {sendDailyDutyNotification, sendDailyBookReadingPoll} = require("./dailyMessages");
+const {sendDailyDutyNotification} = require("./dailyMessages");
 const {askForCsvScheduleFile} = require('./monthlyMessages')
 const {sendNotificationForWeeklyCleaning} = require('./weeklyMessages')
-const {onChangeScheduleCommand,onChangeCleaningScheduleCommand} = require("./commandsHandler");
+const {onChangeScheduleCommand,onChangeCleaningScheduleCommand, onNextDayCommand} = require("./commandsHandler");
 
 const token =
     process.env.NODE_ENV === 'development'
@@ -36,7 +36,7 @@ sendNotificationForWeeklyCleaning(bot)
 
 askForCsvScheduleFile(bot)
 
-
+onNextDayCommand(bot)
 
 // bot.on('message', (msg) => {
 //     const chatId = msg.chat.id;
