@@ -5,10 +5,7 @@ const {askForCsvScheduleFile} = require('./monthlyMessages')
 const {sendNotificationForWeeklyCleaning} = require('./weeklyMessages')
 const {onChangeScheduleCommand,onChangeCleaningScheduleCommand, onNextDayCommand} = require("./commandsHandler");
 
-const token =
-    process.env.NODE_ENV === 'development'
-        ? process.env.SECRET_TELEGRAM_TEST_BOT_TOKEN
-        : process.env.SECRET_TELEGRM_BOT_TOKEN;
+const token = process.env.SECRET_TELEGRAM_TEST_BOT_TOKEN
 
 
 
