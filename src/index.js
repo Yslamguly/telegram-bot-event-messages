@@ -32,9 +32,9 @@ onChangeCleaningScheduleCommand(bot)
 
 sendDailyDutyNotification(bot);
 
-sendNotificationForWeeklyCleaning(bot)
+// sendNotificationForWeeklyCleaning(bot)
 
-askForCsvScheduleFile(bot)
+// askForCsvScheduleFile(bot)
 
 onNextDayCommand(bot)
 
